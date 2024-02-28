@@ -1,0 +1,69 @@
+<div fxLayout="row" fxLayoutAlign="start start">
+    <mat-toolbar class="toolbar">
+        <button mat-button>
+            <mat-icon class="home">home</mat-icon>
+        </button>
+        <br>
+    </mat-toolbar>
+</div>
+<br>
+
+<form class="searchBox">
+    <mat-form-field appearance="outline">
+        <mat-label class="label">Search</mat-label>
+        <input matInput [formControl]="searchControl" >
+    </mat-form-field>
+</form>
+  
+
+<div fxLayout="row" fxLayoutAlign="start center">
+    <table mat-table [dataSource]="userDetails" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="No">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <ng-container matColumnDef="login">
+            <th mat-header-cell *matHeaderCellDef> Log-in </th>
+            <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="avatar_url">
+            <th mat-header-cell *matHeaderCellDef> Avatar Url </th>
+            <td mat-cell *matCellDef="let element"> <img src="{{element.avatar_url}}" fxFlex.xs="20%" fxFlex.sm="20%"
+                    width="50" height="auto" alt=""></td>
+        </ng-container>
+
+        <ng-container matColumnDef="url">
+            <th mat-header-cell *matHeaderCellDef> URL </th>
+            <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element">{{element.type}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="site_admin">
+            <th mat-header-cell *matHeaderCellDef> Site Admin </th>
+            <td mat-cell *matCellDef="let element">{{element.site_admin}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef> Score </th>
+            <td mat-cell *matCellDef="let element">{{element.score}}</td>
+        </ng-container>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    </table>
+</div>
